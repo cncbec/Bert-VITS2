@@ -144,17 +144,16 @@ class Webui_config:
         config_path: str,
         language_identification_library: str,
         port: int = 7860,
-        share: bool = False,
+        share: bool = True,
         debug: bool = False,
     ):
-        self.device: str = device
-        self.model: str = model  # 端口号
-        self.config_path: str = config_path  # 是否公开部署，对外网开放
-        self.port: int = port  # 是否开启debug模式
-        self.share: bool = share  # 模型路径
-        self.debug: bool = debug  # 配置文件路径
-        self.language_identification_library: str = (
-            language_identification_library  # 语种识别库
+        self.device: str = cuda
+        self.model: str = ./datasetname/Model_File.pth  
+        self.config_path: str = config_path 
+        self.port: int = port  
+        self.share: bool = share  
+        self.debug: bool = debug 
+        self.language_identification_library: str = "langid"
         )
 
     @classmethod
@@ -181,8 +180,8 @@ class Translate_config:
     """翻译api配置"""
 
     def __init__(self, app_key: str, secret_key: str):
-        self.app_key = app_key
-        self.secret_key = secret_key
+        self.app_key = "20231122001888708"
+        self.secret_key = "3CiK8RlEtsLpMyCtZQgT"
 
     @classmethod
     def from_dict(cls, data: Dict[str, any]):
