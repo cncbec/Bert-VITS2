@@ -151,8 +151,8 @@ class Webui_config:
         self.model: str = "./datasetname/models/Model_File.pth"  
         self.config_path: str = "./configs/config.json"
         self.port: int = port  
-        self.share: bool = share  
-        self.debug: bool = debug 
+        self.share: bool = True  
+        self.debug: bool = True   
         self.language_identification_library: str = "langid"
         
 
