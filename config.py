@@ -148,7 +148,7 @@ class Webui_config:
         debug: bool = False,
     ):
         self.device: str = "cuda"
-        self.model: str = "./datasetname/Model_File.pth"  
+        self.model: str = "./datasetname/models/Model_File.pth"  
         self.config_path: str = "./configs/config.json"
         self.port: int = port  
         self.share: bool = share  
