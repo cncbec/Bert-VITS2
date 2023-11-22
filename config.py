@@ -147,14 +147,14 @@ class Webui_config:
         share: bool = True,
         debug: bool = False,
     ):
-        self.device: str = cuda
-        self.model: str = ./datasetname/Model_File.pth  
-        self.config_path: str = config_path 
+        self.device: str = "cuda"
+        self.model: str = "./datasetname/Model_File.pth"  
+        self.config_path: str = "./configs/config.json"
         self.port: int = port  
         self.share: bool = share  
         self.debug: bool = debug 
         self.language_identification_library: str = "langid"
-        )
+        
 
     @classmethod
     def from_dict(cls, dataset_path: str, data: Dict[str, any]):
