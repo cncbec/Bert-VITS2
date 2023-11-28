@@ -42,7 +42,7 @@ class Preprocess_text_config:
         max_val_total: int = 10000,
         clean: bool = True,
     ):
-        self.transcription_path: str = "./filelists/dataset.list"  # 原始文本文件路径，文本格式应为{wav_path}|{speaker_name}|{language}|{text}。
+        self.transcription_path: str = "./filelists/datasetname.list"  # 原始文本文件路径，文本格式应为{wav_path}|{speaker_name}|{language}|{text}。
         self.cleaned_path: str = " "  # 数据清洗后文本路径，可以不填。不填则将在原始文本目录生成
         self.train_path: str = "./filelists/train.list"  # 训练集路径，可以不填。不填则将在原始文本目录生成
         self.val_path: str = "./filelists/val.list" # 验证集路径，可以不填。不填则将在原始文本目录生成
