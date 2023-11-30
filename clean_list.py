@@ -12,6 +12,7 @@ from slicer2 import Slicer
 a="gxd" #此处更改人名（英文简称，相应名字的音频文件要放到./data/目录下）
 
 def split_long_audio(filepaths, save_dir="data_dir", out_sr=44100):
+  os.makedirs(save_dir)
   audio, sr = librosa.load(f'{filepaths}.wav', sr=None, mono=False)  # Load an audio file with librosa.
   slicer = Slicer(
       sr=sr,
