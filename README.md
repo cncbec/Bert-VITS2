@@ -1,3 +1,10 @@
+# 本库说明
+* 视频来源https://www.bilibili.com/video/BV1Uu4y1w7q3
+* 音频可以使用长语音，也可以使用短语音。如果使用长语音，则需要使用clean_list.py进行切分和slice.py进行数据集整理，clean_list.py参考一个大佬：https://github.com/v3ucn/Bert-VITS2_V202_Train/的音频切分；slice.py参考：https://blog.csdn.net/qq_51506262/article/details/133359555和https://www.bilibili.com/video/BV1b34y1g7Ah。如果使用短语音，注意短语音命名要以**_0开始，则在slice.py中，要注释split_long_audio(model, f"data/{a}", f"./raw/{a}")相关内容，只进行语音识别。
+* 使用重新采样resample.py过程中，如果有报错，则要重新生成音频文件，以及命名。因为有音频长度为0。
+* 可以使用webui.py进行测试。如果需要python命令生成，则参考：inference_single.py
+* 同样准备了colab上的ipynb训练和推理示例（Bert-VITS v2.0.2 一键训练脚本.ipynb）
+
 # Bert-VITS2
 
 VITS2 Backbone with multipal-language bert
