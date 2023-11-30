@@ -653,16 +653,16 @@ if __name__ == "__main__":
         "-r", "--sdp_ratio", default=0.2, action="store_true", help="sdp ratio"
     )
     parser.add_argument(
-        "--noise_scale", default=0.2, action="store_true", help="noise scale" #minimum=0.1, maximum=2
+        "--noise_scale", default=0.6, action="store_true", help="noise scale" #minimum=0.1, maximum=2
     )
     parser.add_argument(
-        "--noise_scale_w", default=0.4, action="store_true", help="noise scale w" #minimum=0.1, maximum=2
+        "--noise_scale_w", default=0.8, action="store_true", help="noise scale w" #minimum=0.1, maximum=2
     )
     parser.add_argument(
-        "--length_scale", default=0.8, action="store_true", help="length scale" #minimum=0.1, maximum=2
+        "--length_scale", default=1.0, action="store_true", help="length scale" #minimum=0.1, maximum=2
     )
     parser.add_argument(
-        "--language", default="ZH", action="store_true", help="language" #["ZH", "JP"]
+        "--language", default="auto", action="store_true", help="language" #["ZH", "JP", "EN", "mix", "auto"]
     )
 
     args = parser.parse_args()
