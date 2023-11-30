@@ -29,6 +29,10 @@ from tools.translate import translate
 import requests
 from pydub import AudioSegment
 
+import argparse
+from scipy.io import wavfile
+
+
 net_g = None
 
 device = config.webui_config.device
