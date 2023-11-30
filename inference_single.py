@@ -680,7 +680,7 @@ if __name__ == "__main__":
     # create_audio(args, hps)
     generated_audio = tts_fn_create(args.text,args.speaker,args.sdp_ratio,args.noise_scale,args.noise_scale_w,args.length_scale,args.language)
     # 将音频数据转换为16位有符号整数格式
-    generated_audio = (generated_audio * (2 ** 15 - 1)).astype(np.int16)
+    # generated_audio = (generated_audio * (2 ** 15 - 1)).astype(np.int16)
     # 保存生成的音频为.wav文件
     output_path = "./output_audio.wav"  # 修改保存路径
     print('采样率是{}'.format(hps.data.sampling_rate))
