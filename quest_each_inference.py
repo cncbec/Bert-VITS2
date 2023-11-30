@@ -486,7 +486,7 @@ def inference_wav(output_path,text,output_name,args,hps):
                                     args.length_scale, args.language)
 
     # 将音频数据转换为16位有符号整数格式
-    generated_audio = (generated_audio * (2 ** 15 - 1)).astype(np.int16)
+    # generated_audio = (generated_audio * (2 ** 15 - 1)).astype(np.int16)
 
     # 保存为WAV文件
     # 保存生成的音频为.wav文件
@@ -631,9 +631,9 @@ def create_audio(args,hps):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument(
-        "-m", "--model", default="./logs/gxd/G_6000.pth", help="path of your model"
-    )
+    # parser.add_argument(
+    #     "-m", "--model", default="./logs/gxd/G_6000.pth", help="path of your model"
+    # )
     parser.add_argument(
         "-c",
         "--config",
@@ -656,16 +656,16 @@ if __name__ == "__main__":
         "-r", "--sdp_ratio", default=0.2, action="store_true", help="sdp ratio"
     )
     parser.add_argument(
-        "--noise_scale", default=0.2, action="store_true", help="noise scale" #minimum=0.1, maximum=2
+        "--noise_scale", default=0.6, action="store_true", help="noise scale" #minimum=0.1, maximum=2
     )
     parser.add_argument(
-        "--noise_scale_w", default=0.4, action="store_true", help="noise scale w" #minimum=0.1, maximum=2
+        "--noise_scale_w", default=0.8, action="store_true", help="noise scale w" #minimum=0.1, maximum=2
     )
     parser.add_argument(
-        "--length_scale", default=0.8, action="store_true", help="length scale" #minimum=0.1, maximum=2
+        "--length_scale", default=1.0, action="store_true", help="length scale" #minimum=0.1, maximum=2
     )
     parser.add_argument(
-        "--language", default="ZH", action="store_true", help="language" #["ZH", "JP"]
+        "--language", default="auto", action="store_true", help="language" #["ZH", "JP", "EN", "mix", "auto"]
     )
 
     args = parser.parse_args()
