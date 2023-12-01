@@ -629,7 +629,7 @@ def create_audio(args,hps):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument(
-        "-m", "--model", default="./logs/gxd/G_6000.pth", help="path of your model"
+        "-m", "--model", default="./gxd/models/G_4000.pth" , help="path of your model"
     )
     parser.add_argument(
         "-c",
@@ -644,10 +644,10 @@ if __name__ == "__main__":
         "-d", "--debug", action="store_true", help="enable DEBUG-LEVEL log"
     )
     parser.add_argument(
-        "-t", "--text", default="吃葡萄不吐葡萄皮，不吃葡萄倒吐葡萄皮。", type=str, help="text to gernate voice"
+        "-t", "--text", default="为什么反者道之动？什么叫反者道之动呢？就世界上所有的事物都必然走向他自己的反面，由于这一点，让中国中华民族有一种智慧", type=str, help="text to gernate voice"
     )
     parser.add_argument(
-        "-s", "--speaker", default="gaoxiangdong", type=str, help="speaker short name"
+        "-s", "--speaker", default="gxd", type=str, help="speaker short name"
     )
     parser.add_argument(
         "-r", "--sdp_ratio", default=0.2, action="store_true", help="sdp ratio"
@@ -666,11 +666,15 @@ if __name__ == "__main__":
     )
 
     args = parser.parse_args()
-    hps = utils.get_hparams_from_file(config.webui_config.config_path)
+    #hps = utils.get_hparams_from_file(config.webui_config.config_path)
+    hps = utils.get_hparams_from_file('./configs/config.json')
     # 若config.json中未指定版本则默认为最新版本
     version = hps.version if hasattr(hps, "version") else latest_version
+    # net_g = get_net_g(
+    #     model_path=config.webui_config.model, version=version, device=device, hps=hps
+    # )
     net_g = get_net_g(
-        model_path=config.webui_config.model, version=version, device=device, hps=hps
+        model_path=args.model, version=version, device=device, hps=hps
     )
     speaker_ids = hps.data.spk2id
     speakers = list(speaker_ids.keys())
