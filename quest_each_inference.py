@@ -31,7 +31,7 @@ from pydub import AudioSegment
 
 import argparse
 from scipy.io import wavfile
-
+from pathlib import Path
 
 net_g = None
 
@@ -631,9 +631,9 @@ def create_audio(args,hps):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    # parser.add_argument(
-    #     "-m", "--model", default="./gxd/models/G_4000.pth", help="path of your model"
-    # )
+    parser.add_argument(
+        "-m", "--model", default="./gxd/models/G_4000.pth", help="path of your model"
+    )
     parser.add_argument(
         "-c",
         "--config",
