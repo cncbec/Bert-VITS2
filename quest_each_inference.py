@@ -482,6 +482,10 @@ def tts_fn_create(
     return audio_concat
 
 
+#删除生成音频的前后静默时长
+def remove_silence_from_both_ends(audio, sampling_rate, duration_to_remove):
+    samples_to_remove = int(sampling_rate * duration_to_remove)
+    return audio[samples_to_remove:-samples_to_remove]
 
 def inference_wav(output_path,text,output_name,args,hps):
     generated_audio = tts_fn_create(text, args.speaker, args.sdp_ratio, args.noise_scale, args.noise_scale_w,
@@ -493,7 +497,8 @@ def inference_wav(output_path,text,output_name,args,hps):
     # 保存为WAV文件
     # 保存生成的音频为.wav文件
     output_path = output_path + "/" + output_name + ".wav"  # 修改保存路径
-    wavfile.write(output_path, hps.data.sampling_rate, generated_audio)
+
+    wavfile.write(output_path, hps.data.sampling_rate, remove_silence_from_both_ends(generated_audio, hps.data.sampling_rate, 0.3))
 
     print(f"音频已保存到{output_path}")
 
