@@ -9,7 +9,7 @@ import click
 from text.cleaner import clean_text
 from config import config
 from infer import latest_version
-
+import random
 preprocess_text_config = config.preprocess_text_config
 
 
@@ -106,9 +106,10 @@ def preprocess(
 
     for spk, utts in spk_utt_map.items():
         shuffle(utts)
-        val_list += utts[:val_per_spk]
-        train_list += utts[val_per_spk:]
-
+        print(utts)
+        val_list += random.sample(utts, int(len(utts) * 0.2))
+        train_list += random.sample(utts, int(len(utts) * 0.8))
+    
     if len(val_list) > max_val_total:
         train_list += val_list[max_val_total:]
         val_list = val_list[:max_val_total]
